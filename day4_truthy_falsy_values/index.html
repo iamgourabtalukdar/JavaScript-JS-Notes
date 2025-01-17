@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truthy & Falsy Values</title>
+    <style>
+      * {
+        font-family: "Nunito", sans-serif;
+      }
+      body {
+        background-color: #111;
+        color: #fff;
+        padding: 32px;
+      }
+      code {
+        font-family: Consols, "courier new";
+        color: crimson;
+        background-color: #ffffff;
+        padding: 2px 8px;
+        font-weight: 600;
+        border-radius: 4px;
+      }
+      li {
+        margin-bottom: 16px;
+      }
+    </style>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <h1>Truthy & Falsy Values</h1>
+    <ol>
+      <li>
+        Truthy Values :
+        <ul>
+          <li>number: [3, -3, 3.4, -3.4, Infinity, -Infinity]</li>
+          <li>
+            string: [all string with length > 0 ---OR--- all string except empty
+            string]
+          </li>
+          <li>Boolean: [true]</li>
+          <li>bigint: [all values except 0n]</li>
+        </ul>
+      </li>
+      <li>
+        Falsy Values :
+        <ul>
+          <li>number: [0, NaN]</li>
+          <li>string: [Empty string]</li>
+          <li>Boolean: [false]</li>
+          <li>undefined: [undefined]</li>
+          <li>null: [null]</li>
+          <li>bigint: [0n]</li>
+        </ul>
+      </li>
+    </ol>
+  </body>
+</html>
