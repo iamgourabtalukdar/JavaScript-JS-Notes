@@ -16,6 +16,7 @@
 // console.log(Number("5abc"));
 // console.log(parseInt("5"));
 // console.log(parseInt("5abc"));
+// console.log(+"5");
 // console.log(+"5a");
 
 // console.dir(Number);

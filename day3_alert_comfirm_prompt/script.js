@@ -1,5 +1,3 @@
-console.log("running");
-
 // alert("hello");
 
 // if (confirm("do you want to proceed ?")) {
