@@ -87,3 +87,4 @@ let obj5 = {
 // console.log(a1 === a2);
 // console.log(o1 == o2);
 // console.log(o1 === o2);
+// console.log({} === {});
