@@ -2,7 +2,6 @@ const arr = [1, 2, 3, 4, 5];
 const name = ["arpi", "gourab", "rahul", "sudipta"];
 // const myname = "Gourab Talukdar";
 
-// entries, every, filter, find, findIndex, findLast, findLastIndex, forEach, map, reduce, some, sort, values
 // console.log(arr);
 // console.log(arr.at(10));
 // console.log(arr.concat([6, 7, 8]));
