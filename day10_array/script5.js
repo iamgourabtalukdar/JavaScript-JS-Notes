@@ -76,8 +76,9 @@ const students = [
 
 // num = [1, 6, 15, 2, 3, 30];
 // const x = num.reduce((a, b) => {
+//   console.log(a, b);
 //   return a * b;
-// }, 1);
+// });
 
 // // const x = num.reduce((a, b) => a + b);
 
@@ -88,10 +89,10 @@ const students = [
 // const sortedData = filteredData.sort((a, b) => a.roll - b.roll);
 // console.log(sortedData);
 
-students
-  .filter((student) => student.name === "xyz")
-  .sort((a, b) => a.roll - b.roll)
-  .forEach((student) => {
-    // console.log("Roll = " + student.roll + " Name = " + student.name);
-    console.log(`Roll = ${student.roll} Name = ${student.name}`);
-  });
+// students
+//   .filter((student) => student.name === "xyz")
+//   .sort((a, b) => a.roll - b.roll)
+//   .forEach((student) => {
+//     // console.log("Roll = " + student.roll + " Name = " + student.name);
+//     console.log(`Roll = ${student.roll} Name = ${student.name}`);
+//   });
