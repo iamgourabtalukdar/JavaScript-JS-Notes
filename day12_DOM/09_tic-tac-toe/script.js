@@ -1,6 +1,9 @@
 const statusElem = document.querySelector("#status");
 const restartBtn = document.querySelector("#restart-btn");
 const board = document.querySelector("#board");
+const player1ScoreBoard = document.querySelector("#player1-score");
+const player2ScoreBoard = document.querySelector("#player2-score");
+
 let player;
 const player1Symbol = "X";
 const player2Symbol = "O";
@@ -89,9 +92,15 @@ function checkClick(e) {
   }
   const index = checkWin();
   if (index !== -1) {
-    statusElem.innerText = `Winner is : ${
-      boardInputArr[index] ? player1Symbol : player2Symbol
-    }`;
+    //updating score board
+    if (boardInputArr[index]) {
+      statusElem.innerText = `Winner is : ${player1Symbol}`;
+      player1ScoreBoard.innerText = parseInt(player1ScoreBoard.innerText) + 1;
+    } else {
+      statusElem.innerText = `Winner is : ${player2Symbol}`;
+      player2ScoreBoard.innerText = parseInt(player2ScoreBoard.innerText) + 1;
+    }
+    // resetting game
     board.onclick = resetGame;
     // board.removeEventListener("click", checkClick);
     // board.addEventListener("click", resetGame);
