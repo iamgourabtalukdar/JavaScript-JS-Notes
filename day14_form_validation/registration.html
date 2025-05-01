@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/registration.css" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <div class="registration-container">
+      <h1>Create an Account</h1>
+
+      <form id="registration-form">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="Enter your full name"
+            onkeypress="typing(event)"
+          />
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <!-- here type should be "email", but for checking our validation, we are adding type="text" -->
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            onkeypress="typing(event)"
+          />
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Create a password"
+            onkeypress="typing(event)"
+          />
+          <small class="error"></small>
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" />
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" name="country">
+            <option value="">Select your country</option>
+            <option value="usa">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="canada">Canada</option>
+            <option value="australia">Australia</option>
+            <option value="other">Other</option>
+          </select>
+        </div> -->
+
+        <button type="submit">Register</button>
+
+        <div class="login-link">
+          Already have an account? <a href="login.html">Login here</a>
+        </div>
+      </form>
+    </div>
+    <script src="./js/registration.js"></script>
+  </body>
+</html>
