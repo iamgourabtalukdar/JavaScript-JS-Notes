@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom styles */
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      /* Simple transition for a smoother appearance */
+      .weather-card {
+        transition: all 0.3s ease-in-out;
+      }
+    </style>
+
+    <script src="./script.js" defer></script>
+  </head>
+  <body
+    class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen p-4"
+  >
+    <div
+      class="weather-card w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8"
+    >
+      <!-- Header: Search and Title -->
+      <header
+        class="flex flex-col md:flex-row justify-between items-center mb-6"
+      >
+        <h1
+          class="text-2xl font-bold text-gray-800 dark:text-white mb-4 md:mb-0"
+        >
+          Weather Dashboard
+        </h1>
+        <div class="w-full md:w-auto">
+          <form id="searchForm" class="flex items-center gap-2">
+            <input
+              type="text"
+              id="cityInput"
+              name="cityInput"
+              placeholder="Enter city name..."
+              class="w-full md:w-64 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="submit"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow-md transition-colors duration-300"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main id="weatherContent" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Left Panel: Current Weather Summary -->
+        <section
+          class="lg:col-span-1 bg-blue-500 text-white rounded-xl p-6 flex flex-col justify-between shadow-lg"
+        >
+          <div>
+            <h2 id="locationName" class="text-3xl font-bold">--</h2>
+            <p id="locationDetails" class="text-blue-100">--, --</p>
+            <p id="localTime" class="text-sm text-blue-200 mt-1">--</p>
+          </div>
+          <div class="text-center my-8">
+            <img
+              id="weatherIcon"
+              src="https://placehold.co/128x128/ffffff/3B82F6?text=?"
+              alt="Weather condition icon"
+              class="mx-auto w-24 h-24 md:w-32 md:h-32"
+            />
+            <p
+              id="temperature"
+              class="text-6xl font-extrabold tracking-tighter"
+            >
+              --°C
+            </p>
+            <p id="conditionText" class="text-lg font-medium capitalize">--</p>
+          </div>
+          <div>
+            <p class="text-sm text-blue-200">
+              Last updated: <span id="lastUpdated">--</span>
+            </p>
+          </div>
+        </section>
+
+        <!-- Right Panel: Detailed Weather Info -->
+        <section class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <!-- Detail Card: Feels Like -->
+          <div
+            class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl flex flex-col items-start shadow"
+          >
+            <div
+              class="flex items-center text-gray-500 dark:text-gray-400 mb-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 3a1 1 0 011 1v5.586l1.293-1.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414L9 9.586V4a1 1 0 011-1zM5 14a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-sm font-medium">Feels Like</span>
+            </div>
+            <p
+              id="feelsLike"
+              class="text-2xl font-bold text-gray-800 dark:text-white"
+            >
+              --°C
+            </p>
+          </div>
+
+          <!-- Detail Card: Humidity -->
+          <div
+            class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl flex flex-col items-start shadow"
+          >
+            <div
+              class="flex items-center text-gray-500 dark:text-gray-400 mb-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M5.5 16a3.5 3.5 0 01-3.5-3.5V8.25a.75.75 0 011.5 0V12.5a2 2 0 002 2h.5a.75.75 0 010 1.5H5.5z"
+                />
+                <path
+                  d="M15.25 12.5a.75.75 0 00-1.5 0v3.25a2 2 0 01-2 2h-.5a.75.75 0 000 1.5h.5a3.5 3.5 0 003.5-3.5V12.5zM10 2.5a.75.75 0 00-1.5 0v10a.75.75 0 001.5 0v-10z"
+                />
+              </svg>
+              <span class="text-sm font-medium">Humidity</span>
+            </div>
+            <p
+              id="humidity"
+              class="text-2xl font-bold text-gray-800 dark:text-white"
+            >
+              --%
+            </p>
+          </div>
+
+          <!-- Detail Card: Wind -->
+          <div
+            class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl flex flex-col items-start shadow"
+          >
+            <div
+              class="flex items-center text-gray-500 dark:text-gray-400 mb-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H6.75A.75.75 0 016 10zm-2.25 3.5A.75.75 0 014.5 12h8a.75.75 0 010 1.5h-8a.75.75 0 01-.75-.75zM3 6.5A.75.75 0 013.75 6h12.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.5z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-sm font-medium">Wind</span>
+            </div>
+            <p
+              id="wind"
+              class="text-2xl font-bold text-gray-800 dark:text-white"
+            >
+              -- kph
+            </p>
+            <p id="windDir" class="text-sm text-gray-600 dark:text-gray-300">
+              Direction: --
+            </p>
+          </div>
+
+          <!-- Detail Card: Pressure -->
+          <div
+            class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl flex flex-col items-start shadow"
+          >
+            <div
+              class="flex items-center text-gray-500 dark:text-gray-400 mb-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M10.75 3.5a.75.75 0 00-1.5 0v3.316a3.51 3.51 0 00-3.333 3.184.75.75 0 001.499.132 2.01 2.01 0 012.084-1.832h.5a.75.75 0 000-1.5h-.5a.51.51 0 01-.51-.5V3.5zM8.5 10a.5.5 0 00-1 0v.638a2.002 2.002 0 01-1.447 1.932.75.75 0 10.593 1.382A3.503 3.503 0 009.5 10.638V10a.5.5 0 00-.5-.5h-2a.5.5 0 000 1h1.5V10z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm0 1.5a9.5 9.5 0 100-19 9.5 9.5 0 000 19z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-sm font-medium">Pressure</span>
+            </div>
+            <p
+              id="pressure"
+              class="text-2xl font-bold text-gray-800 dark:text-white"
+            >
+              -- mb
+            </p>
+          </div>
+
+          <!-- Detail Card: UV Index -->
+          <div
+            class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl flex flex-col items-start shadow"
+          >
+            <div
+              class="flex items-center text-gray-500 dark:text-gray-400 mb-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM5.22 6.22a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zM2 10a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 012 10zm3.22 4.78a.75.75 0 010-1.06l1.06-1.06a.75.75 0 111.06 1.06l-1.06 1.06a.75.75 0 01-1.06 0zM10 18a.75.75 0 01-.75-.75v-1.5a.75.75 0 011.5 0v1.5A.75.75 0 0110 18zm4.78-3.22a.75.75 0 01-1.06 0l-1.06-1.06a.75.75 0 011.06-1.06l1.06 1.06a.75.75 0 010 1.06zM18 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0118 10zm-3.22-4.78a.75.75 0 010 1.06l-1.06 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zM10 5a5 5 0 100 10 5 5 0 000-10z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-sm font-medium">UV Index</span>
+            </div>
+            <p
+              id="uvIndex"
+              class="text-2xl font-bold text-gray-800 dark:text-white"
+            >
+              --
+            </p>
+          </div>
+
+          <!-- Detail Card: Visibility -->
+          <div
+            class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl flex flex-col items-start shadow"
+          >
+            <div
+              class="flex items-center text-gray-500 dark:text-gray-400 mb-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+                <path
+                  fill-rule="evenodd"
+                  d="M.664 10.59a1.651 1.651 0 010-1.18l3.25-3.25a.75.75 0 011.061 1.06l-1.07 1.07a4.5 4.5 0 005.474 5.474l1.07-1.07a.75.75 0 111.06 1.06l-3.25 3.25a1.651 1.651 0 01-1.18 0l-3.25-3.25zM19.336 9.41a1.651 1.651 0 010 1.18l-3.25 3.25a.75.75 0 01-1.06-1.06l1.07-1.07a4.5 4.5 0 00-5.475-5.475l-1.068 1.068a.75.75 0 01-1.06-1.06l3.25-3.25a1.651 1.651 0 011.18 0l3.25 3.25z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-sm font-medium">Visibility</span>
+            </div>
+            <p
+              id="visibility"
+              class="text-2xl font-bold text-gray-800 dark:text-white"
+            >
+              -- km
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <!-- Message/Error Display -->
+      <div
+        id="errorBox"
+        class="hidden mt-4 text-center text-red-500 font-medium p-3 bg-red-100 dark:bg-red-900/20 rounded-lg"
+      ></div>
+    </div>
+  </body>
+</html>
