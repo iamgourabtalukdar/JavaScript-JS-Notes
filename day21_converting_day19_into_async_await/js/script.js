@@ -23,7 +23,7 @@ function displayStudents(students) {
                     ${pin ? `${pin}` : ""}
             </td>
             <td class="px-6 py-4">
-              <a href="/updateStudent.html?id=${id}" class="text-blue-800 underline">Edit</a>
+              <a href="./updateStudent.html?id=${id}" class="text-blue-800 underline">Edit</a>
             </td>
           </tr>`;
   });

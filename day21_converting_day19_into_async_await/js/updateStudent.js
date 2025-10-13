@@ -32,7 +32,7 @@ studentForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    window.location.href = "/";
+    window.location.href = "./index.html";
   } catch (err) {
     console.error(err);
     errorElem.innerHTML = err.message;
